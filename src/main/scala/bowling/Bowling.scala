@@ -63,7 +63,7 @@ case class Game(frames: List[Frame]) {
                 }
                 case _ => {
                     val newScore = score + currentFrame.roll1 + currentFrame.roll2
-                    computeScore(score, frames.tail)
+                    computeScore(newScore, frames.tail)
                 }
             }
         }

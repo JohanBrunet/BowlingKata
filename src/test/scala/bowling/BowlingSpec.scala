@@ -11,7 +11,7 @@ class BowlingSpec extends FunSpec with Matchers {
 
     def addAllFrame(game: Game, list : List[Frame]) : Game = {
         if(list.isEmpty) game
-        else addAllFrame(game.copy(frames = addFrame(list.head)),list.tail)
+        else addAllFrame(game.copy(frames = game.addFrame(list.head)),list.tail)
     }
 
     val gameFrameNull = addAllFrame(game, listFrameNull)
@@ -22,10 +22,8 @@ class BowlingSpec extends FunSpec with Matchers {
             assert(gameFrameNull.computeScore(0, gameFrameNull.frames) == 0)
         }
 
-        // it("should be 0 when all rolls go into the gutter") {
-        //     gameWith(
-        //         rollWith(1 pinDown).times(20)
-        //     ) should have(scoreOf(20))
-        // }
+        it("should be 20 when all rolls are 1") {
+            assert(gameFrame1.computeScore(0, gameFrame1.frames) == 20)
+        }
     }
 }
